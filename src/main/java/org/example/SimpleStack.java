@@ -9,10 +9,11 @@ public class SimpleStack implements Stack {
      */
 
     // Création de la pile
-    private List<Item> stack = new ArrayList<>();
+    private final List<Item> stack;
 
     public SimpleStack () {
-        this.stack = stack;
+
+        this.stack = new ArrayList<>();
     }
     @Override
     public boolean isEmpty() {
@@ -24,7 +25,7 @@ public class SimpleStack implements Stack {
      */
     @Override
     public int getSize() {
-        return 0;
+        return stack.size();
     }
 
     /**
@@ -43,7 +44,11 @@ public class SimpleStack implements Stack {
      */
     @Override
     public Item peek() throws EmptyStackException {
-        return null;
+        if (stack.isEmpty()){
+            throw new EmptyStackException();
+        }
+        return stack.get(stack.size()-1);
+
     }
 
     /**
@@ -54,6 +59,9 @@ public class SimpleStack implements Stack {
      */
     @Override
     public Item pop() throws EmptyStackException {
-        return null;
+        if (stack.isEmpty()){
+            throw new EmptyStackException();
+        }
+        return stack.remove(stack.size()-1);
     }
 }
